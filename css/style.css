@@ -16,7 +16,7 @@ body {
   color: green;
 }
 
-.pokemon_button {
+.digimon_button {
   font-family: inherit;
   font-weight: bold;
   background-color: #f00;
@@ -33,6 +33,7 @@ body {
   display: inline-block;
   box-sizing: border-box;
   background: #fff;
+  color: inherit;
   padding: 15px;
   width: 100%;
   max-width: 700px;
@@ -42,6 +43,7 @@ body {
 .modal-content {
   border-radius: 5px;
   border-width: 15px;
+  border-style: solid;
   border-color: #000;
 }
 
@@ -63,11 +65,11 @@ body {
   margin-bottom: 0;
 }
 
-#modal-pokemon {
+#modal-digimon {
   display: none;
 }
 
-#modal-pokemon.is-visible {
+#modal-digimon.is-visible {
   display: block;
   position: fixed;
   padding: 20px;
