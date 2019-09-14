@@ -41,9 +41,10 @@ var digimonList = (function () {
     return $.ajax(url).then(function (response) {
       return response.json();
     }).then(function (details) {
+      item.id = details.id;
+      item.name = details.name;
       item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = Object.keys(details.types);
+      item.level = Object.keys(details.level);
       return item
     }).catch(function (e) {
       console.error(e);
@@ -55,9 +56,9 @@ var digimonList = (function () {
     var $modal = $('<div class="modal"></div>');
     var $closeButtonElement = $('<button class="modal-close">Close</button>');
     $closeButtonElement.on('click', hideModal);
-    var $nameElement = $('<h1>' + pokemon.name + ' </h1>');
+    var $nameElement = $('<h1>' + digimon.name + ' </h1>');
     var $imageElement = $('<img src="' + imageUrl + '"></img>');
-    var $heightElement = $('<p>' + pokemon.height + ' </p>');
+    var $heightElement = $('<p>' + digimon.id + ', ' + digimon.level + ' </p>');
 
     $modal.append($closeButtonElement);
     $modal.append($nameElement);
