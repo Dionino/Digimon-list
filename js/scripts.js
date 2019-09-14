@@ -10,7 +10,7 @@ var digimonList = (function () {
   };
 
   function addListItem(digimon) {
-    var $listItem = $('Digilist');
+    var $listItem = $('.Digilist');
     $listItem.append('<li><button class="digimon_button">' + digimon.name + '</button></li>');
     $('body').append($listItem);
     $('button').on('click', function (event) {
@@ -27,7 +27,7 @@ var digimonList = (function () {
   }
 
   function loadList() {
-    return $.ajax({apiUrl, dataType: 'json'}).then(function (item) {
+    return $.ajax({ url: apiUrl, dataType: 'json'}).then(function (item) {
       $.each(item, function(i, item) {
         add(item);
       });
@@ -102,7 +102,7 @@ var digimonList = (function () {
 
 var $Digilist = $('Digilist');
 
-digimonList.loadList().then(function(digimon) {
+digimonList.loadList().then(function() {
   var $digimon = digimonList.getAll();
   $.each($digimon, function(i, digimon) {
     digimonList.addListItem(digimon);
