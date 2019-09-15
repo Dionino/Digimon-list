@@ -39,10 +39,9 @@ var digimonList = (function () {
   function loadDetails(item) {
     var url = 'https://digimon-api.herokuapp.com/api/digimon';
     return $.ajax(url).then(function (details) {
-      item.id = details.id;
-      item.name = details.name;
-      item.imageUrl = details.img;
-      item.level = details.level;
+      $.each(item, function(i, item) {
+        add(item);
+      });
       return item;
     }).catch(function (e) {
       console.error(e);
@@ -55,7 +54,7 @@ var digimonList = (function () {
     var $closeButtonElement = $('<button class="modal-close">Close</button>');
     $closeButtonElement.on('click', hideModal);
     var $nameElement = $('<h1>' + digimon.name + ' </h1>');
-    var $imageElement = $('<img src="' + digimon.imageUrl + '"></img>');
+    var $imageElement = $('<img src="https://digimon.shadowsmith.com/img/'+digimon.name.toLowerCase()+'.jpg"></img>');
     var $heightElement = $('<p>' + digimon.id + ', ' + digimon.level + ' </p>');
 
     $modal.append($closeButtonElement);
@@ -69,7 +68,7 @@ var digimonList = (function () {
 
   function hideModal() {
     var $modalDigimon = $('#modal-digimon');
-    $('#modal-digimon').removeclass('is-visible');
+    $('#modal-digimon').removeClass('is-visible');
   };
 
   $(window).on('keydown', (e) => {

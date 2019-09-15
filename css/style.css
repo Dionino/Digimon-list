@@ -12,6 +12,54 @@ body {
   box-sizing: border-box;
 }
 
+.digivice {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: -1;
+}
+
+ul {
+  list-style-type: none;
+
+  margin-left: 150px;
+  margin-top: -530px;
+  padding: 0;
+  height: 100%;
+  width: 10%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  background-size: 1800% 1800%;
+
+  -webkit-animation: rainbow 10s ease infinite;
+  -z-animation: rainbow 10s ease infinite;
+  -o-animation: rainbow 10s ease infinite;
+  animation: rainbow 10s ease infinite;}
+
+  @-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+  }
+  @-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+  }
+  @-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+  }
+  @keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+  }
+
 .types {
   color: green;
 }
@@ -19,13 +67,15 @@ body {
 .digimon_button {
   font-family: inherit;
   font-weight: bold;
-  background-color: #f00;
+  background-color: transparent;
   color: #000;
   text-decoration: none;
-  padding: 9px;
-  border-radius: 3px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 1px;
   border: 1px solid rgba(0, 0, 0);
   margin-bottom: 1px;
+  text-align: left;
 }
 
 .modal {
@@ -78,7 +128,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: none;
+  background: transparent;
   /* to show it above other content */
   z-index: 999;
   /* to allow scrolling if the screen is not high enough*/
