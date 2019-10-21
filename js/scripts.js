@@ -11,9 +11,10 @@ var digimonList = (function () {
 
   function addListItem(digimon) {
     var $listItem = $('.Digilist');
-    $listItem.append('<li><button class="digimon_button" ' + ' id=' + digimon.name + '>' + digimon.name + '</button></li>');
+    var $button = $('<li><button type="button" class="digimon_button" data-toggle="modal" data-target="#exampleModalCenter"> ' + digimon.name + '</button></li>');
+    $listItem.append($button);
     $('body').append($listItem);
-    $('button#'+digimon.name).on('click', function (event) {
+    $listItem.click(function (event) {
       showDetails(digimon);
     })
   };
@@ -49,42 +50,17 @@ var digimonList = (function () {
   };
 
   function showModal(digimon) {
-    var $modalDigimon = $('#modal-digimon').html('');
-    var $modal = $('<div class="modal"></div>');
-    var $closeButtonElement = $('<button class="modal-close">Close</button>');
-    $closeButtonElement.on('click', hideModal);
-    var $nameElement = $('<h1>' + digimon.name + ' </h1>');
+    var $modalTitle = $('.modal-header');
+    var $nameElement = $('<h5>' + digimon.name + ' </h5>');
+    $modalTitle.append('$nameElement');
+    var $modal = $('modal-body');
     var $imageElement = $('<img src="https://digimon.shadowsmith.com/img/'+digimon.name.toLowerCase()+'.jpg"></img>');
+    $('div.digimon-img').html($imageElement);
     var $detailsElement = $('<p> ID: ' + digimon.id + ', Level: ' + digimon.level + ' </p>');
+    $modal.append('$imageElement');
+    $modal.append('$detailsElement');
 
-    $modal.append($closeButtonElement);
-    $modal.append($nameElement);
-    $modal.append($imageElement);
-    $modal.append($detailsElement);
-    $('#modal-digimon').append($modal);
-
-    $('#modal-digimon').addClass('is-visible');
   };
-
-  function hideModal() {
-    var $modalDigimon = $('#modal-digimon');
-    $('#modal-digimon').removeClass('is-visible');
-  };
-
-  $(window).on('keydown', (e) => {
-    var $modalDigimon = $('#modal-digimon');
-    if (e.key === 'Escape' && $('#modal-digimon').hasClass('is-visible')) {
-      hideModal();
-    }
-  });
-
-  var $modalDigimon = $('#modal-digimon');
-  $('#modal-digimon').on('click', (e) => {
-    var target = e.target;
-    if (target === $modalDigimon) {
-      hideModal();
-    }
-  });
 
   return {
     add: add,
@@ -92,8 +68,6 @@ var digimonList = (function () {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showModal: showModal,
-    hideModal: hideModal
   };
 
 })(); // IIFE ends here
