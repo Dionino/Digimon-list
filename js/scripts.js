@@ -46,7 +46,7 @@ var digimonList = (function () {
 			return item;
 		}).catch(function (e) {
 			console.error(e);
-		});
+		})
 	}
 
 	function showModal(digimon) {
