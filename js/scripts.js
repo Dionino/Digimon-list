@@ -14,7 +14,7 @@ var digimonList = (function () {
 		var $button = $('<li><button type="button" class="digimon_button" data-toggle="modal" data-target="#exampleModalCenter"> ' + digimon.name + '</button></li>');
 		$listItem.append($button);
 		$('body').append($listItem);
-		$listItem.click(function () {
+		$button.on('click', function () {
 			showDetails(digimon);
 		})
 	}
@@ -50,13 +50,15 @@ var digimonList = (function () {
 	}
 
 	function showModal(digimon) {
-		var $modalTitle = $('.modal-header');
-		var $nameElement = $('<h5>' + digimon.name + ' </h5>');
-		$modalTitle.append('$nameElement');
+		var $modalTitle = $('modal-title');
 		var $modal = $('modal-body');
+		var $nameElement = digimon.name;
+		$('h5.modal-title').html($nameElement);
 		var $imageElement = $('<img src="https://digimon.shadowsmith.com/img/'+digimon.name.toLowerCase()+'.jpg"></img>');
 		$('div.digimon-img').html($imageElement);
 		var $detailsElement = $('<p> ID: ' + digimon.id + ', Level: ' + digimon.level + ' </p>');
+		$('p.digimon-details').html($detailsElement);
+		$modalTitle.append('$nameElement');
 		$modal.append('$imageElement');
 		$modal.append('$detailsElement');
 
