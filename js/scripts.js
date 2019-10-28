@@ -68,6 +68,7 @@ var digimonList = (function () {
 		addListItem: addListItem,
 		loadList: loadList,
 		loadDetails: loadDetails,
+    showModal: showModal
 	};
 
 })(); // IIFE ends here
